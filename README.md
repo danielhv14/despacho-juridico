@@ -31,4 +31,5 @@ CRUD completo para gestión de despacho jurídico desarrollado con Python y MySQ
 6. Ejecutar: `python3 app.py`
 
 ## 👤 Autor
-danielhv14
+**Daniel Hidalgo Velásquez**
+[@danielhv14](https://github.com/danielhv14)
