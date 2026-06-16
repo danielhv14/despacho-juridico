@@ -30,8 +30,8 @@ def crear(data):
     query = """
     INSERT INTO clientes
     (tipo, nombre, identificacion, email,
-    telefono, direccion, ciudad,
-    estado_civil, ocupacion, observaciones)
+     telefono, direccion, ciudad,
+     estado_civil, ocupacion, observaciones)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     return ejecutar_consulta(query, (
@@ -45,5 +45,41 @@ def crear(data):
         data.get("estado_civil", ""),
         data.get("ocupacion", ""),
         data.get("observaciones", ""),
-))
+    ))
 
+
+def actualizar(id, data):
+    """Actualiza un cliente existente."""
+    query = """
+    UPDATE clientes
+    SET tipo = %s,
+        nombre = %s,
+        identificacion = %s,
+        email = %s,
+        telefono = %s,
+        direccion = %s,
+        ciudad = %s,
+        estado_civil = %s,
+        ocupacion = %s,
+        observaciones = %s
+    WHERE id = %s
+    """
+    return ejecutar_consulta(query, (
+        data["tipo"],
+        data["nombre"],
+        data["identificacion"],
+        data.get("email", ""),
+        data.get("telefono", ""),
+        data.get("direccion", ""),
+        data.get("ciudad", ""),
+        data.get("estado_civil", ""),
+        data.get("ocupacion", ""),
+        data.get("observaciones", ""),
+        id,
+    ))
+
+
+def eliminar(id):
+    """Marca un cliente como inactivo en lugar de eliminarlo."""
+    query = "UPDATE clientes SET activo = 0 WHERE id = %s"
+    return ejecutar_consulta(query, (id,))
