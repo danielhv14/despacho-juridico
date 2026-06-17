@@ -63,3 +63,9 @@ def actualizar(id, data):
         data.get("telefono", ""),
         id,
     ))
+
+
+def eliminar(id):
+    """Marca un abogado como inactivo en lugar de eliminarlo."""
+    query = "UPDATE abogados SET activo = 0 WHERE id = %s"
+    return ejecutar_consulta(query, (id,))
