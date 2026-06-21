@@ -100,3 +100,7 @@ def actualizar(id, data):
     ))
 
 
+def eliminar(id):
+    """Elimina un caso por su id."""
+    query = "DELETE FROM casos WHERE id = %s"
+    return ejecutar_consulta(query, (id,))
