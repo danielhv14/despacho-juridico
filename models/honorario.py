@@ -48,11 +48,18 @@ def crear(data):
     ))
 
 
-def actualizar_estado(id, nuevo_estado):
+def actualizar_estado(id, estado, fecha_pago=None):
     """Actualiza el estado de un honorario."""
     query = """
     UPDATE honorarios
-    SET estado = %s
+    SET estado = %s,
+        fecha_pago = %s
     WHERE id = %s
     """
     return ejecutar_consulta(query, (estado, fecha_pago, id))
+
+
+def eliminar(id):
+    """Elimina un honorario por su id."""
+    query = "DELETE FROM honorarios WHERE id = %s"
+    return ejecutar_consulta(query, (id,))
