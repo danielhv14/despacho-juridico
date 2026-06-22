@@ -1,7 +1,11 @@
 # views/login.py
 # Pantalla de inicio de sesión
 
-import customtkinter as ctk
+try:
+    import customtkinter as ctk
+except ImportError:  # type: ignore[no-redef]
+    import tkinter as ctk
+
 from models import usuario
 from config.settings import (
     COLOR_PRIMARIO,
